@@ -10,14 +10,13 @@
 
     <style>
         :root {
-            --bg: #2a2a2a;           /* основной тёмный фон — как у лого */
-            --bg-soft: #333333;      /* чуть светлее для блоков */
-            --silver: #c9c4bd;       /* серебристо-бежевый — с лого */
-            --silver-soft: #8f8a83;  /* приглушённый серебристый */
-            --text: #e8e4de;         /* светлый текст */
-            --heading: #f0ece6;      /* заголовки */
-            --muted: #9a948c;        /* приглушённый текст */
-            --line: #444444;         /* линии-разделители */
+            --bg: #2a2a2a;
+            --silver: #c9c4bd;
+            --silver-soft: #8f8a83;
+            --text: #e8e4de;
+            --heading: #f0ece6;
+            --muted: #9a948c;
+            --line: #444444;
             --back-red: #c65a52;
             --forward-green: #6a9c5f;
         }
@@ -29,119 +28,75 @@
             color: var(--text);
             line-height: 1.7;
         }
-        header {
-            text-align: center;
-            padding: 40px 20px 20px;
-        }
+        header { text-align: center; padding: 40px 20px 20px; }
         .logo {
-            max-width: 280px;
-            width: 70%;
-            height: auto;
-            margin: 0 auto 30px;
-            display: block;
+            max-width: 280px; width: 70%; height: auto;
+            margin: 0 auto 30px; display: block;
         }
         h1 {
-            font-size: 2.6rem;
-            font-weight: normal;
-            letter-spacing: 2px;
-            margin: 0 0 10px 0;
+            font-size: 2.6rem; font-weight: normal;
+            letter-spacing: 2px; margin: 0 0 10px 0;
             color: var(--heading);
         }
         .subtitle {
             font-family: 'Helvetica', 'Arial', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 0.8rem;
-            color: var(--muted);
+            text-transform: uppercase; letter-spacing: 4px;
+            font-size: 0.8rem; color: var(--muted);
         }
-        main {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px 80px;
-        }
+        main { max-width: 1100px; margin: 0 auto; padding: 0 20px 80px; }
         h2 {
-            font-weight: normal;
-            font-size: 1.8rem;
-            color: var(--heading);
-            border-bottom: 1px solid var(--line);
-            padding-bottom: 10px;
-            margin-top: 70px;
-            margin-bottom: 25px;
+            font-weight: normal; font-size: 1.8rem;
+            color: var(--heading); border-bottom: 1px solid var(--line);
+            padding-bottom: 10px; margin-top: 70px; margin-bottom: 25px;
         }
         p { font-size: 1.05rem; }
-
         .about p { font-size: 1.1rem; color: var(--silver); }
         .about .signature {
-            font-style: italic;
-            color: var(--silver);
-            margin-top: 20px;
-            font-size: 1.15rem;
+            font-style: italic; color: var(--silver);
+            margin-top: 20px; font-size: 1.15rem;
         }
-
         .services-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+            list-style: none; padding: 0; margin: 0;
             font-family: 'Helvetica', 'Arial', sans-serif;
         }
         .services-list li {
             border-bottom: 1px solid var(--line);
-            padding: 16px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+            padding: 16px 0; display: flex;
+            justify-content: space-between; align-items: baseline;
         }
         .services-list .service-price {
-            color: var(--silver);
-            font-weight: bold;
-            white-space: nowrap;
-            margin-left: 20px;
-            letter-spacing: 0.5px;
+            color: var(--silver); font-weight: bold;
+            white-space: nowrap; margin-left: 20px;
         }
-
         .contacts {
             font-family: 'Helvetica', 'Arial', sans-serif;
-            font-size: 1rem;
-            line-height: 2;
-            color: var(--silver);
+            font-size: 1rem; line-height: 2; color: var(--silver);
         }
         .contacts a {
-            color: var(--heading);
-            text-decoration: none;
+            color: var(--heading); text-decoration: none;
             border-bottom: 1px solid var(--silver-soft);
             transition: border-color 0.2s;
         }
         .contacts a:hover { border-bottom-color: var(--silver); }
         .contacts .label {
-            display: inline-block;
-            min-width: 120px;
+            display: inline-block; min-width: 120px;
             color: var(--muted);
         }
-
         #panorama {
-            width: 100%;
-            height: 75vh;
-            min-height: 500px;
-            margin-top: 30px;
-            background: #1f1f1f;
-            border: none;
-            border-radius: 0;
+            width: 100%; height: 75vh; min-height: 500px;
+            margin-top: 30px; background: #1f1f1f;
+            border: none; border-radius: 0;
         }
         .instructions {
             font-family: 'Helvetica', 'Arial', sans-serif;
-            font-size: 0.9rem;
-            color: var(--muted);
-            margin-top: 14px;
-            text-align: center;
+            font-size: 0.9rem; color: var(--muted);
+            margin-top: 14px; text-align: center;
         }
         footer {
-            text-align: center;
-            padding: 50px 20px;
+            text-align: center; padding: 50px 20px;
             font-family: 'Helvetica', 'Arial', sans-serif;
-            font-size: 0.85rem;
-            color: var(--muted);
-            border-top: 1px solid var(--line);
-            margin-top: 40px;
+            font-size: 0.85rem; color: var(--muted);
+            border-top: 1px solid var(--line); margin-top: 40px;
         }
         @media (max-width: 600px) {
             h1 { font-size: 1.9rem; }
@@ -149,67 +104,64 @@
             #panorama { height: 55vh; min-height: 320px; }
         }
 
-        /* ===== Спиннер ===== */
+        /* Спиннер */
         .pnlm-load-box {
             background: transparent !important;
             box-shadow: none !important;
-            top: 50% !important;
-            left: 50% !important;
+            top: 50% !important; left: 50% !important;
             transform: translate(-50%, -50%) !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            width: 60px !important;
-            height: 60px !important;
+            padding: 0 !important; margin: 0 !important;
+            width: 60px !important; height: 60px !important;
             border: none !important;
         }
         .pnlm-load-box p,
         .pnlm-load-box .pnlm-ltext,
-        .pnlm-load-box .pnlm-rtext {
-            display: none !important;
-        }
+        .pnlm-load-box .pnlm-rtext { display: none !important; }
         .pnlm-lbar { display: none !important; }
         .pnlm-load-box::after {
-            content: "";
-            display: block;
-            width: 50px;
-            height: 50px;
+            content: ""; display: block;
+            width: 50px; height: 50px;
             border: 4px solid rgba(201, 196, 189, 0.2);
             border-top-color: var(--silver);
             border-radius: 50%;
             animation: pnlm-spin 0.9s linear infinite;
             margin: 0 auto;
         }
-        @keyframes pnlm-spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes pnlm-spin { to { transform: rotate(360deg); } }
 
-        /* Прячем заголовок сцены */
         .pnlm-title-box { display: none !important; }
-
-        /* Красные стрелки «Назад» */
-        .hotspot-back.pnlm-hotspot,
-        .hotspot-back .pnlm-hotspot-base {
-            background-color: var(--back-red) !important;
-            border-color: #a8483f !important;
-        }
-        .hotspot-back.pnlm-hotspot::before {
-            border-bottom-color: var(--back-red) !important;
-        }
-        .hotspot-back.pnlm-hotspot::after { color: #fff !important; }
-
-        /* Зелёные стрелки «Вперёд» */
-        .hotspot-forward.pnlm-hotspot,
-        .hotspot-forward .pnlm-hotspot-base {
-            background-color: var(--forward-green) !important;
-            border-color: #4e7c45 !important;
-        }
-        .hotspot-forward.pnlm-hotspot::before {
-            border-bottom-color: var(--forward-green) !important;
-        }
-        .hotspot-forward.pnlm-hotspot::after { color: #fff !important; }
-
-        /* Убираем белую полосу снизу панорамы (Pannellum иногда её рисует) */
         .pnlm-container { background: #1f1f1f !important; }
+
+        /* ===== Кастомные стрелки ===== */
+        .hotspot-back,
+        .hotspot-forward {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 26px;
+            font-weight: bold;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            cursor: pointer;
+            user-select: none;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            border: 2px solid rgba(255,255,255,0.25);
+        }
+        .hotspot-back {
+            background: var(--back-red);
+        }
+        .hotspot-forward {
+            background: var(--forward-green);
+        }
+        .hotspot-back:hover,
+        .hotspot-forward:hover {
+            transform: scale(1.12);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.65);
+        }
     </style>
 </head>
 <body>
@@ -253,7 +205,7 @@
         <p>Если вы не уверены, как нас найти — покрутите панораму ниже. Она проведёт вас шаг за шагом от ближайшего ориентира до входа в салон.</p>
 
         <div id="panorama"></div>
-        <p class="instructions">Нажмите и перетаскивайте мышкой (или пальцем), чтобы осмотреться по сторонам. Красные стрелки — назад, зелёные — вперёд.</p>
+        <p class="instructions">Нажмите и перетаскивайте мышкой (или пальцем), чтобы осмотреться. Красные кнопки — назад, зелёные — вперёд.</p>
 
     </main>
 
@@ -262,7 +214,30 @@
     </footer>
 
     <script>
-        pannellum.viewer('panorama', {
+        // Хелпер: создаёт кастомный хотспот-кнопку перехода
+        function makeArrow(direction, targetScene) {
+            return {
+                "pitch": 0,
+                "yaw": direction === "back" ? -40 : 40,
+                "type": "custom",
+                "cssClass": direction === "back" ? "hotspot-back" : "hotspot-forward",
+                "createTooltipFunc": function(div, args) {
+                    div.innerHTML = args.arrow;
+                    div.title = args.tip;
+                    div.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        viewer.loadScene(args.target);
+                    });
+                },
+                "createTooltipArgs": {
+                    "arrow": direction === "back" ? "←" : "→",
+                    "tip": direction === "back" ? "Назад" : "Вперёд",
+                    "target": targetScene
+                }
+            };
+        }
+
+        var viewer = pannellum.viewer('panorama', {
             "default": {
                 "firstScene": "scene1",
                 "autoLoad": true,
@@ -278,56 +253,43 @@
                 "scene1": {
                     "title": "Улица Мичуринская",
                     "panorama": "1.jpg",
-                    "hotSpots": [
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene2", "cssClass": "hotspot-forward" }
-                    ]
+                    "hotSpots": [ makeArrow("forward", "scene2") ]
                 },
                 "scene2": {
                     "title": "Двигаемся по улице Мичуринской",
                     "panorama": "2.jpg",
-                    "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene1", "cssClass": "hotspot-back" },
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene3", "cssClass": "hotspot-forward" }
-                    ]
+                    "hotSpots": [ makeArrow("back", "scene1"), makeArrow("forward", "scene3") ]
                 },
                 "scene3": {
                     "title": "Дальше",
                     "panorama": "3.jpg",
-                    "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene2", "cssClass": "hotspot-back" },
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene4", "cssClass": "hotspot-forward" }
-                    ]
+                    "hotSpots": [ makeArrow("back", "scene2"), makeArrow("forward", "scene4") ]
                 },
                 "scene4": {
                     "title": "Налево во двор",
                     "panorama": "4.jpg",
-                    "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene3", "cssClass": "hotspot-back" },
-                        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Во двор →", "sceneId": "scene5", "cssClass": "hotspot-forward" }
-                    ]
+                    "hotSpots": [ makeArrow("back", "scene3"), makeArrow("forward", "scene5") ]
                 },
                 "scene5": {
                     "title": "Налево",
                     "panorama": "5.jpg",
-                    "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene4", "cssClass": "hotspot-back" },
-                        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Налево →", "sceneId": "scene6", "cssClass": "hotspot-forward" }
-                    ]
+                    "hotSpots": [ makeArrow("back", "scene4"), makeArrow("forward", "scene6") ]
                 },
                 "scene6": {
                     "title": "Прямо",
                     "panorama": "6.jpg",
-                    "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene5", "cssClass": "hotspot-back" },
-                        { "pitch": 0, "yaw": 0, "type": "scene", "text": "Прямо →", "sceneId": "scene7", "cssClass": "hotspot-forward" }
-                    ]
+                    "hotSpots": [ makeArrow("back", "scene5"), makeArrow("forward", "scene7") ]
                 },
                 "scene7": {
                     "title": "Вы на месте",
                     "panorama": "7.jpg",
                     "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene6", "cssClass": "hotspot-back" },
-                        { "pitch": 0, "yaw": 0, "type": "info", "text": "Добро пожаловать в салон!" }
+                        makeArrow("back", "scene6"),
+                        {
+                            "pitch": 0, "yaw": 0,
+                            "type": "info",
+                            "text": "Добро пожаловать в салон!"
+                        }
                     ]
                 }
             }
