@@ -10,10 +10,15 @@
 
     <style>
         :root {
-            --primary: #8c7b6b;
-            --bg: #fdfbf7;
-            --text: #333;
-            --muted: #999;
+            --graphite: #3d3d3d;      /* тёмный графит — основной акцент */
+            --graphite-dark: #2a2a2a; /* почти чёрный */
+            --silver: #c9c4bd;        /* серебристо-бежевый */
+            --silver-light: #e8e4de;  /* очень светлый оттенок */
+            --bg: #faf8f5;            /* тёплый светлый фон */
+            --text: #2e2e2e;
+            --muted: #8a857e;
+            --back-red: #c65a52;      /* красная стрелка «Назад» */
+            --forward-green: #6a9c5f; /* зелёная стрелка «Вперёд» */
         }
         * { box-sizing: border-box; }
         body {
@@ -25,20 +30,29 @@
         }
         header {
             text-align: center;
-            padding: 70px 20px 40px;
+            padding: 50px 20px 30px;
+        }
+        .logo {
+            max-width: 320px;
+            width: 80%;
+            height: auto;
+            margin: 0 auto 20px;
+            display: block;
+            /* лёгкое свечение снизу, чтобы лого «сидело» на светлом фоне */
+            filter: drop-shadow(0 6px 16px rgba(61, 61, 61, 0.15));
         }
         h1 {
-            font-size: 3rem;
+            font-size: 2.6rem;
             font-weight: normal;
             letter-spacing: 2px;
             margin: 0 0 10px 0;
-            color: var(--primary);
+            color: var(--graphite);
         }
         .subtitle {
             font-family: 'Helvetica', 'Arial', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.85rem;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
             color: var(--muted);
         }
         main {
@@ -49,19 +63,24 @@
         h2 {
             font-weight: normal;
             font-size: 1.8rem;
-            border-bottom: 2px solid var(--primary);
+            color: var(--graphite);
+            border-bottom: 1px solid var(--silver);
             padding-bottom: 10px;
             margin-top: 70px;
             margin-bottom: 25px;
         }
         p { font-size: 1.05rem; }
+
+        /* Обо мне */
         .about p { font-size: 1.1rem; color: #444; }
         .about .signature {
             font-style: italic;
-            color: var(--primary);
+            color: var(--graphite);
             margin-top: 20px;
             font-size: 1.15rem;
         }
+
+        /* Услуги */
         .services-list {
             list-style: none;
             padding: 0;
@@ -69,49 +88,53 @@
             font-family: 'Helvetica', 'Arial', sans-serif;
         }
         .services-list li {
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #ece8e2;
             padding: 16px 0;
             display: flex;
             justify-content: space-between;
             align-items: baseline;
         }
         .services-list .service-price {
-            color: var(--primary);
+            color: var(--graphite);
             font-weight: bold;
             white-space: nowrap;
             margin-left: 20px;
+            letter-spacing: 0.5px;
         }
+
+        /* Контакты */
         .contacts {
             font-family: 'Helvetica', 'Arial', sans-serif;
             font-size: 1rem;
             line-height: 2;
         }
         .contacts a {
-            color: var(--primary);
+            color: var(--graphite);
             text-decoration: none;
-            border-bottom: 1px solid var(--primary);
+            border-bottom: 1px solid var(--silver);
+            transition: border-color 0.2s;
         }
-        .contacts a:hover { opacity: 0.7; }
+        .contacts a:hover { border-bottom-color: var(--graphite); }
         .contacts .label {
             display: inline-block;
             min-width: 120px;
             color: var(--muted);
         }
 
-        /* Панорама — большая, без рамок и скруглений */
+        /* Панорама — большая, без рамок */
         #panorama {
             width: 100%;
             height: 75vh;
             min-height: 500px;
             margin-top: 30px;
-            background: #f3ede6;
+            background: var(--silver-light);
             border: none;
             border-radius: 0;
         }
         .instructions {
             font-family: 'Helvetica', 'Arial', sans-serif;
             font-size: 0.9rem;
-            color: #666;
+            color: var(--muted);
             margin-top: 14px;
             text-align: center;
         }
@@ -120,12 +143,13 @@
             padding: 50px 20px;
             font-family: 'Helvetica', 'Arial', sans-serif;
             font-size: 0.85rem;
-            color: #aaa;
-            border-top: 1px solid #eee;
+            color: var(--muted);
+            border-top: 1px solid #ece8e2;
             margin-top: 40px;
         }
         @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
+            h1 { font-size: 1.9rem; }
+            .logo { max-width: 220px; }
             #panorama { height: 55vh; min-height: 320px; }
         }
 
@@ -153,8 +177,8 @@
             display: block;
             width: 50px;
             height: 50px;
-            border: 4px solid rgba(140, 123, 107, 0.25);
-            border-top-color: #8c7b6b;
+            border: 4px solid rgba(61, 61, 61, 0.15);
+            border-top-color: var(--graphite);
             border-radius: 50%;
             animation: pnlm-spin 0.9s linear infinite;
             margin: 0 auto;
@@ -163,13 +187,47 @@
             to { transform: rotate(360deg); }
         }
 
-        /* ===== Скрываем заголовок сцены (был «Точка 2» внизу слева) ===== */
+        /* ===== Скрываем заголовок сцены ===== */
         .pnlm-title-box { display: none !important; }
+
+        /* ===== Красные стрелки «Назад» ===== */
+        .hotspot-back.pnlm-hotspot,
+        .hotspot-back .pnlm-hotspot-base {
+            background-color: var(--back-red) !important;
+            border-color: #a8483f !important;
+        }
+        .hotspot-back.pnlm-hotspot::before {
+            border-bottom-color: var(--back-red) !important;
+        }
+        .hotspot-back.pnlm-hotspot::after {
+            color: #fff !important;
+        }
+        .hotspot-back .pnlm-sprite {
+            background-color: var(--back-red) !important;
+        }
+
+        /* ===== Зелёные стрелки «Вперёд» ===== */
+        .hotspot-forward.pnlm-hotspot,
+        .hotspot-forward .pnlm-hotspot-base {
+            background-color: var(--forward-green) !important;
+            border-color: #4e7c45 !important;
+        }
+        .hotspot-forward.pnlm-hotspot::before {
+            border-bottom-color: var(--forward-green) !important;
+        }
+        .hotspot-forward.pnlm-hotspot::after {
+            color: #fff !important;
+        }
+        .hotspot-forward .pnlm-sprite {
+            background-color: var(--forward-green) !important;
+        }
     </style>
 </head>
 <body>
 
     <header>
+        <!-- Логотип: файл logo.png должен лежать в корне репозитория рядом с index.html -->
+        <img src="logo.png" alt="Larisa — салон красоты" class="logo">
         <h1>Larisa test site</h1>
         <div class="subtitle">Салон красоты · Женские прически</div>
     </header>
@@ -207,7 +265,7 @@
         <p>Если вы не уверены, как нас найти — покрутите панораму ниже. Она проведёт вас шаг за шагом от ближайшего ориентира до входа в салон.</p>
 
         <div id="panorama"></div>
-        <p class="instructions">Нажмите и перетаскивайте мышкой (или пальцем), чтобы осмотреться по сторонам. Нажимайте на стрелки, чтобы перейти к следующей точке маршрута.</p>
+        <p class="instructions">Нажмите и перетаскивайте мышкой (или пальцем), чтобы осмотреться по сторонам. Красные стрелки — назад по маршруту, зелёные — вперёд.</p>
 
     </main>
 
@@ -233,54 +291,54 @@
                     "title": "Улица Мичуринская",
                     "panorama": "1.jpg",
                     "hotSpots": [
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene2" }
+                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene2", "cssClass": "hotspot-forward" }
                     ]
                 },
                 "scene2": {
                     "title": "Двигаемся по улице Мичуринской",
                     "panorama": "2.jpg",
                     "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene1" },
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene3" }
+                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene1", "cssClass": "hotspot-back" },
+                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene3", "cssClass": "hotspot-forward" }
                     ]
                 },
                 "scene3": {
                     "title": "Дальше",
                     "panorama": "3.jpg",
                     "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene2" },
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene4" }
+                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene2", "cssClass": "hotspot-back" },
+                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene4", "cssClass": "hotspot-forward" }
                     ]
                 },
                 "scene4": {
                     "title": "Налево во двор",
                     "panorama": "4.jpg",
                     "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene3" },
-                        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Во двор →", "sceneId": "scene5" }
+                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene3", "cssClass": "hotspot-back" },
+                        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Во двор →", "sceneId": "scene5", "cssClass": "hotspot-forward" }
                     ]
                 },
                 "scene5": {
                     "title": "Налево",
                     "panorama": "5.jpg",
                     "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene4" },
-                        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Налево →", "sceneId": "scene6" }
+                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene4", "cssClass": "hotspot-back" },
+                        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Налево →", "sceneId": "scene6", "cssClass": "hotspot-forward" }
                     ]
                 },
                 "scene6": {
                     "title": "Прямо",
                     "panorama": "6.jpg",
                     "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene5" },
-                        { "pitch": 0, "yaw": 0, "type": "scene", "text": "Прямо →", "sceneId": "scene7" }
+                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene5", "cssClass": "hotspot-back" },
+                        { "pitch": 0, "yaw": 0, "type": "scene", "text": "Прямо →", "sceneId": "scene7", "cssClass": "hotspot-forward" }
                     ]
                 },
                 "scene7": {
                     "title": "Вы на месте",
                     "panorama": "7.jpg",
                     "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene6" },
+                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene6", "cssClass": "hotspot-back" },
                         { "pitch": 0, "yaw": 0, "type": "info", "text": "Добро пожаловать в салон!" }
                     ]
                 }
