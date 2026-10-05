@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Larisa test site</title>
 
-    <!-- Стили и скрипт панорамного просмотрщика Pannellum -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
     <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 
@@ -43,7 +42,7 @@
             color: var(--muted);
         }
         main {
-            max-width: 800px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px 80px;
         }
@@ -56,18 +55,13 @@
             margin-bottom: 25px;
         }
         p { font-size: 1.05rem; }
-        /* Секция «Обо мне» */
-        .about p {
-            font-size: 1.1rem;
-            color: #444;
-        }
+        .about p { font-size: 1.1rem; color: #444; }
         .about .signature {
             font-style: italic;
             color: var(--primary);
             margin-top: 20px;
             font-size: 1.15rem;
         }
-        /* Услуги */
         .services-list {
             list-style: none;
             padding: 0;
@@ -81,14 +75,12 @@
             justify-content: space-between;
             align-items: baseline;
         }
-        .services-list .service-name { font-size: 1.05rem; }
         .services-list .service-price {
             color: var(--primary);
             font-weight: bold;
             white-space: nowrap;
             margin-left: 20px;
         }
-        /* Контакты */
         .contacts {
             font-family: 'Helvetica', 'Arial', sans-serif;
             font-size: 1rem;
@@ -105,22 +97,22 @@
             min-width: 120px;
             color: var(--muted);
         }
-        /* Панорама */
+
+        /* Панорама — большая, без рамок и скруглений */
         #panorama {
             width: 100%;
-            height: 60vh;
-            min-height: 400px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            margin-top: 20px;
+            height: 75vh;
+            min-height: 500px;
+            margin-top: 30px;
             background: #f3ede6;
+            border: none;
+            border-radius: 0;
         }
         .instructions {
             font-family: 'Helvetica', 'Arial', sans-serif;
             font-size: 0.9rem;
             color: #666;
-            margin-top: 12px;
+            margin-top: 14px;
             text-align: center;
         }
         footer {
@@ -134,10 +126,10 @@
         }
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
-            #panorama { height: 45vh; min-height: 300px; }
+            #panorama { height: 55vh; min-height: 320px; }
         }
 
-        /* ===== Спиннер загрузки панорамы ===== */
+        /* ===== Спиннер загрузки ===== */
         .pnlm-load-box {
             background: transparent !important;
             box-shadow: none !important;
@@ -170,6 +162,9 @@
         @keyframes pnlm-spin {
             to { transform: rotate(360deg); }
         }
+
+        /* ===== Скрываем заголовок сцены (был «Точка 2» внизу слева) ===== */
+        .pnlm-title-box { display: none !important; }
     </style>
 </head>
 <body>
@@ -181,59 +176,33 @@
 
     <main>
 
-        <!-- ===== ОБО МНЕ ===== -->
         <section class="about">
             <h2>Обо мне</h2>
             <p>Здравствуйте! Меня зовут Лариса, и я создаю прически, которые подчеркивают вашу индивидуальность. За плечами — более десяти лет работы с женскими образами: от лёгких повседневных укладок до сложных свадебных причесок.</p>
-            <p>Я работаю в уютной студии, где нет спешки и суеты. Каждая гостья получает полное внимание, а результат — не только красивую прическу, но и хорошее настроение. Использую профессиональные средства и всегда подбираю уход под ваш тип волос.</p>
+            <p>Я работаю в уютной студии, где нет спешки и суеты. Каждая гостья получает полное внимание, а результат — не только красивую прическу, но и хорошее настроение.</p>
             <p class="signature">— С любовью к своему делу, Лариса</p>
         </section>
 
-        <!-- ===== УСЛУГИ ===== -->
         <h2>Услуги</h2>
         <ul class="services-list">
-            <li>
-                <span class="service-name">Вечерняя прическа</span>
-                <span class="service-price">от 2500 ₽</span>
-            </li>
-            <li>
-                <span class="service-name">Свадебный образ (прическа + укладка)</span>
-                <span class="service-price">от 5000 ₽</span>
-            </li>
-            <li>
-                <span class="service-name">Локоны и голливудская волна</span>
-                <span class="service-price">от 1800 ₽</span>
-            </li>
-            <li>
-                <span class="service-name">Плетение кос (одна коса / French / Dutch)</span>
-                <span class="service-price">от 1200 ₽</span>
-            </li>
-            <li>
-                <span class="service-name">Повседневная укладка (фен + стайлинг)</span>
-                <span class="service-price">от 1000 ₽</span>
-            </li>
-            <li>
-                <span class="service-name">Укладка на выпускной / фотосессию</span>
-                <span class="service-price">от 2200 ₽</span>
-            </li>
-            <li>
-                <span class="service-name">Консультация по уходу за волосами</span>
-                <span class="service-price">бесплатно</span>
-            </li>
+            <li><span>Вечерняя прическа</span> <span class="service-price">от 2500 ₽</span></li>
+            <li><span>Свадебный образ (прическа + укладка)</span> <span class="service-price">от 5000 ₽</span></li>
+            <li><span>Локоны и голливудская волна</span> <span class="service-price">от 1800 ₽</span></li>
+            <li><span>Плетение кос (одна коса / French / Dutch)</span> <span class="service-price">от 1200 ₽</span></li>
+            <li><span>Повседневная укладка (фен + стайлинг)</span> <span class="service-price">от 1000 ₽</span></li>
+            <li><span>Укладка на выпускной / фотосессию</span> <span class="service-price">от 2200 ₽</span></li>
+            <li><span>Консультация по уходу за волосами</span> <span class="service-price">бесплатно</span></li>
         </ul>
 
-        <!-- ===== КОНТАКТЫ ===== -->
         <h2>Контакты</h2>
         <div class="contacts">
-            <div><span class="label">Адрес:</span> г. Москва, ул. Примерная, д. 12, 3 этаж, каб. 5</div>
+            <div><span class="label">Адрес:</span> г. Москва, ул. Мичуринская, д. 12</div>
             <div><span class="label">Телефон:</span> <a href="tel:+79000000000">+7 (900) 000-00-00</a></div>
             <div><span class="label">WhatsApp:</span> <a href="https://wa.me/79000000000" target="_blank">+7 (900) 000-00-00</a></div>
             <div><span class="label">Telegram:</span> <a href="https://t.me/larisa_test" target="_blank">@larisa_test</a></div>
-            <div><span class="label">Instagram:</span> <a href="https://instagram.com/larisa_test" target="_blank">@larisa_test</a></div>
             <div><span class="label">Часы работы:</span> Пн–Вс, 10:00 – 21:00 (по записи)</div>
         </div>
 
-        <!-- ===== КАК ДОБРАТЬСЯ ===== -->
         <h2>Как добраться</h2>
         <p>Если вы не уверены, как нас найти — покрутите панораму ниже. Она проведёт вас шаг за шагом от ближайшего ориентира до входа в салон.</p>
 
@@ -252,23 +221,23 @@
                 "firstScene": "scene1",
                 "autoLoad": true,
                 "sceneFadeDuration": 1000,
-                // Кручение только по горизонтали:
                 "minPitch": 0,
                 "maxPitch": 0,
                 "pitch": 0,
                 "yaw": 0,
-                "hfov": 110
+                "hfov": 110,
+                "showControls": true
             },
             "scenes": {
                 "scene1": {
-                    "title": "Точка 1. Начало маршрута",
+                    "title": "Улица Мичуринская",
                     "panorama": "1.jpg",
                     "hotSpots": [
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Идём дальше →", "sceneId": "scene2" }
+                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene2" }
                     ]
                 },
                 "scene2": {
-                    "title": "Точка 2",
+                    "title": "Двигаемся по улице Мичуринской",
                     "panorama": "2.jpg",
                     "hotSpots": [
                         { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene1" },
@@ -276,7 +245,7 @@
                     ]
                 },
                 "scene3": {
-                    "title": "Точка 3",
+                    "title": "Дальше",
                     "panorama": "3.jpg",
                     "hotSpots": [
                         { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene2" },
@@ -284,59 +253,35 @@
                     ]
                 },
                 "scene4": {
-                    "title": "Точка 4",
+                    "title": "Налево во двор",
                     "panorama": "4.jpg",
                     "hotSpots": [
                         { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene3" },
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene5" }
+                        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Во двор →", "sceneId": "scene5" }
                     ]
                 },
                 "scene5": {
-                    "title": "Точка 5",
+                    "title": "Налево",
                     "panorama": "5.jpg",
                     "hotSpots": [
                         { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene4" },
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene6" }
+                        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Налево →", "sceneId": "scene6" }
                     ]
                 },
                 "scene6": {
-                    "title": "Точка 6",
+                    "title": "Прямо",
                     "panorama": "6.jpg",
                     "hotSpots": [
                         { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene5" },
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene7" }
+                        { "pitch": 0, "yaw": 0, "type": "scene", "text": "Прямо →", "sceneId": "scene7" }
                     ]
                 },
                 "scene7": {
-                    "title": "Точка 7",
+                    "title": "Вы на месте",
                     "panorama": "7.jpg",
                     "hotSpots": [
                         { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene6" },
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene8" }
-                    ]
-                },
-                "scene8": {
-                    "title": "Точка 8",
-                    "panorama": "8.jpg",
-                    "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene7" },
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Дальше →", "sceneId": "scene9" }
-                    ]
-                },
-                "scene9": {
-                    "title": "Точка 9",
-                    "panorama": "9.jpg",
-                    "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene8" },
-                        { "pitch": 0, "yaw": 30, "type": "scene", "text": "Почти пришли →", "sceneId": "scene10" }
-                    ]
-                },
-                "scene10": {
-                    "title": "Вы на месте! Вход в салон",
-                    "panorama": "10.jpg",
-                    "hotSpots": [
-                        { "pitch": 0, "yaw": -30, "type": "scene", "text": "← Назад", "sceneId": "scene9" },
-                        { "pitch": 0, "yaw": 0, "type": "info", "text": "Добро пожаловать!" }
+                        { "pitch": 0, "yaw": 0, "type": "info", "text": "Добро пожаловать в салон!" }
                     ]
                 }
             }
