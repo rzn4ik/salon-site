@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Салон красоты | Прически</title>
+    <!-- Подключаем стили и скрипт для панорам (Pannellum) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <style>
+        /* Стили сайта */
+        :root {
+            --primary: #8c7b6b;
+            --bg: #fdfbf7;
+            --text: #333;
+        }
+        body {
+            font-family: 'Georgia', serif; /* Стильный шрифт с засечками */
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin: 0 0 10px 0;
+            color: var(--primary);
+        }
+        .subtitle {
+            font-family: 'Helvetica', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            color: #999;
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+        .services-list {
+            list-style: none;
+            padding: 0;
+            font-family: 'Helvetica', sans-serif;
+        }
+        .services-list li {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        h2 {
+            font-weight: normal;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-top: 60px;
+        }
+        /* Контейнер для панорамы */
+        #panorama {
+            width: 100%;
+            height: 60vh; /* Высота панорамы на экране */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .instructions {
+            font-family: 'Helvetica', sans-serif;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-family: 'Helvetica', sans-serif;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            #panorama { height: 40vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Salon de Beauté</h1>
+        <div class="subtitle">Женские прически</div>
+    </header>
+
+    <main>
+        <h2>Наши услуги</h2>
+        <ul class="services-list">
+            <li><span>Вечерняя прическа</span> <span>от 2500 ₽</span></li>
+            <li><span>Свадебный образ</span> <span>от 4000 ₽</span></li>
+            <li><span>Укладка локоны</span> <span>от 1500 ₽</span></li>
+            <li><span>Плетение кос</span> <span>от 1000 ₽</span></li>
+        </ul>
+
+        <h2>Как добраться</h2>
+        <p>Наш салон находится в самом центре. Если вы потерялись, воспользуйтесь интерактивной панорамой ниже, чтобы построить маршрут.</p>
+        
+        <!-- ЭТО САМЫЙ ВАЖНЫЙ БЛОК -->
+        <div id="panorama"></div>
+        <p class="instructions">Нажмите и перетаскивайте мышкой (или пальцем), чтобы осмотреться. Нажимайте на стрелки, чтобы перейти к следующей точке.</p>
+
+    </main>
+
+    <footer>
+        © 2026 Салон красоты. Все права защищены.
+    </footer>
+
+    <script>
+        // ЗДЕСЬ НАСТРАИВАЕТСЯ ВАШ МАРШРУТ
+        // Вам нужно загрузить ваши файлы (например 1.jpg, 2.jpg) на GitHub рядом с index.html
+        // и указать их имена ниже в поле "panorama: 'имя_файла.jpg'"
+        
+        pannellum.viewer('panorama', {
+            "default": {
+                "firstScene": "scene1",
+                "autoLoad": true,
+                "sceneFadeDuration": 1000 // Плавный переход между точками
+            },
+            "scenes": {
+                "scene1": {
+                    // Первая точка: например, выход из метро
+                    "title": "Выход из метро",
+                    "panorama": "1.jpg", // Имя вашего первого файла
+                    "hfov": 110,
+                    "pitch": 0,
+                    "yaw": 0,
+                    "hotSpots": [
+                        {
+                            "pitch": 0,
+                            "yaw": 30, // Угол, куда смотреть, чтобы увидеть стрелку (настройте сами)
+                            "type": "scene",
+                            "text": "Поверните направо",
+                            "sceneId": "scene2"
+                        }
+                    ]
+                },
+                "scene2": {
+                    // Вторая точка: например, поворот на улицу
+                    "title": "Поворот на улицу",
+                    "panorama": "2.jpg", // Имя вашего второго файла
+                    "hfov": 110,
+                    "hotSpots": [
+                        {
+                            "pitch": 0,
+                            "yaw": 0, // Настройте угол стрелки "назад" или "вперед"
+                            "type": "scene",
+                            "text": "Идите прямо",
+                            "sceneId": "scene3"
+                        }
+                    ]
+                },
+                "scene3": {
+                    // Третья точка: вход в салон
+                    "title": "Вход в салон",
+                    "panorama": "3.jpg", // Имя вашего третьего файла
+                    "hfov": 110,
+                    "hotSpots": [
+                        {
+                            "pitch": 0,
+                            "yaw": 0,
+                            "type": "info",
+                            "text": "Вы на месте! Добро пожаловать."
+                        }
+                    ]
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
