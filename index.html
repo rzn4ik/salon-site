@@ -55,19 +55,69 @@
             font-style: italic; color: var(--silver);
             margin-top: 20px; font-size: 1.15rem;
         }
-        .services-list {
-            list-style: none; padding: 0; margin: 0;
+
+        /* Портфолио */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 220px;
+            gap: 14px;
+            margin-top: 10px;
+        }
+        .gallery-item {
+            position: relative; overflow: hidden;
+            cursor: pointer; background: #1f1f1f;
+            border-radius: 4px;
+        }
+        .gallery-item.wide { grid-column: span 2; grid-row: span 2; }
+        .gallery-item.tall { grid-row: span 2; }
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
+            transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-item .overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(20,20,20,0.85) 0%, rgba(20,20,20,0) 60%);
+            display: flex; align-items: flex-end;
+            padding: 20px; opacity: 0;
+            transition: opacity 0.4s ease;
             font-family: 'Helvetica', 'Arial', sans-serif;
+            color: var(--silver);
+            letter-spacing: 1px; font-size: 1rem;
         }
-        .services-list li {
-            border-bottom: 1px solid var(--line);
-            padding: 16px 0; display: flex;
-            justify-content: space-between; align-items: baseline;
+        .gallery-item:hover .overlay { opacity: 1; }
+        @media (max-width: 700px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 160px; gap: 8px;
+            }
+            .gallery-item.wide { grid-column: span 2; grid-row: span 1; }
+            .gallery-item.tall { grid-row: span 1; }
         }
-        .services-list .service-price {
-            color: var(--silver); font-weight: bold;
-            white-space: nowrap; margin-left: 20px;
+
+        /* Лайтбокс */
+        #lightbox {
+            position: fixed; inset: 0;
+            background: rgba(10,10,10,0.94);
+            display: none; align-items: center;
+            justify-content: center; z-index: 9999;
+            cursor: zoom-out; padding: 30px;
         }
+        #lightbox.active { display: flex; }
+        #lightbox img {
+            max-width: 95vw; max-height: 92vh;
+            object-fit: contain;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            animation: lb-in 0.3s ease;
+        }
+        @keyframes lb-in {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Контакты */
         .contacts {
             font-family: 'Helvetica', 'Arial', sans-serif;
             font-size: 1rem; line-height: 2; color: var(--silver);
@@ -82,6 +132,8 @@
             display: inline-block; min-width: 120px;
             color: var(--muted);
         }
+
+        /* Панорама */
         #panorama {
             width: 100%; height: 75vh; min-height: 500px;
             margin-top: 30px; background: #1f1f1f;
@@ -132,31 +184,21 @@
         .pnlm-title-box { display: none !important; }
         .pnlm-container { background: #1f1f1f !important; }
 
-        /* ===== Кастомные стрелки ===== */
+        /* Кастомные стрелки */
         .hotspot-back,
         .hotspot-forward {
-            width: 52px;
-            height: 52px;
+            width: 52px; height: 52px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 26px;
-            font-weight: bold;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 26px; font-weight: bold;
             font-family: 'Helvetica', 'Arial', sans-serif;
-            cursor: pointer;
-            user-select: none;
+            cursor: pointer; user-select: none;
             box-shadow: 0 4px 14px rgba(0,0,0,0.5);
             transition: transform 0.15s ease, box-shadow 0.15s ease;
             border: 2px solid rgba(255,255,255,0.25);
         }
-        .hotspot-back {
-            background: var(--back-red);
-        }
-        .hotspot-forward {
-            background: var(--forward-green);
-        }
+        .hotspot-back { background: var(--back-red); }
+        .hotspot-forward { background: var(--forward-green); }
         .hotspot-back:hover,
         .hotspot-forward:hover {
             transform: scale(1.12);
@@ -176,21 +218,40 @@
 
         <section class="about">
             <h2>Обо мне</h2>
-            <p>Здравствуйте! Меня зовут Лариса, и я создаю прически, которые подчеркивают вашу индивидуальность. За плечами — более десяти лет работы с женскими образами: от лёгких повседневных укладок до сложных свадебных причесок.</p>
-            <p>Я работаю в уютной студии, где нет спешки и суеты. Каждая гостья получает полное внимание, а результат — не только красивую прическу, но и хорошее настроение.</p>
-            <p class="signature">— С любовью к своему делу, Лариса</p>
+            <p>Я такая-сякая, ёбаный в рот, какой парикмахер — пошли все на хуй, я пизже всех, и так далее, и тому подобное.</p>
         </section>
 
-        <h2>Услуги</h2>
-        <ul class="services-list">
-            <li><span>Вечерняя прическа</span> <span class="service-price">от 2500 ₽</span></li>
-            <li><span>Свадебный образ (прическа + укладка)</span> <span class="service-price">от 5000 ₽</span></li>
-            <li><span>Локоны и голливудская волна</span> <span class="service-price">от 1800 ₽</span></li>
-            <li><span>Плетение кос (одна коса / French / Dutch)</span> <span class="service-price">от 1200 ₽</span></li>
-            <li><span>Повседневная укладка (фен + стайлинг)</span> <span class="service-price">от 1000 ₽</span></li>
-            <li><span>Укладка на выпускной / фотосессию</span> <span class="service-price">от 2200 ₽</span></li>
-            <li><span>Консультация по уходу за волосами</span> <span class="service-price">бесплатно</span></li>
-        </ul>
+        <h2>Портфолио</h2>
+        <div class="gallery">
+            <div class="gallery-item wide" onclick="openLightbox('work1.jpg')">
+                <img src="work1.jpg" alt="Работа 1" loading="lazy">
+                <div class="overlay"><span>Свадебная прическа</span></div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('work2.jpg')">
+                <img src="work2.jpg" alt="Работа 2" loading="lazy">
+                <div class="overlay"><span>Вечерняя укладка</span></div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('work3.jpg')">
+                <img src="work3.jpg" alt="Работа 3" loading="lazy">
+                <div class="overlay"><span>Локоны</span></div>
+            </div>
+            <div class="gallery-item tall" onclick="openLightbox('work4.jpg')">
+                <img src="work4.jpg" alt="Работа 4" loading="lazy">
+                <div class="overlay"><span>Плетение</span></div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('work5.jpg')">
+                <img src="work5.jpg" alt="Работа 5" loading="lazy">
+                <div class="overlay"><span>Образ на выпускной</span></div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('work6.jpg')">
+                <img src="work6.jpg" alt="Работа 6" loading="lazy">
+                <div class="overlay"><span>Повседневная укладка</span></div>
+            </div>
+        </div>
+
+        <div id="lightbox" onclick="closeLightbox()">
+            <img id="lightbox-img" src="" alt="">
+        </div>
 
         <h2>Контакты</h2>
         <div class="contacts">
@@ -214,7 +275,6 @@
     </footer>
 
     <script>
-        // Хелпер: создаёт кастомный хотспот-кнопку перехода
         function makeArrow(direction, targetScene) {
             return {
                 "pitch": 0,
@@ -285,14 +345,23 @@
                     "panorama": "7.jpg",
                     "hotSpots": [
                         makeArrow("back", "scene6"),
-                        {
-                            "pitch": 0, "yaw": 0,
-                            "type": "info",
-                            "text": "Добро пожаловать в салон!"
-                        }
+                        { "pitch": 0, "yaw": 0, "type": "info", "text": "Добро пожаловать в салон!" }
                     ]
                 }
             }
+        });
+
+        function openLightbox(src) {
+            var lb = document.getElementById('lightbox');
+            var img = document.getElementById('lightbox-img');
+            img.src = src;
+            lb.classList.add('active');
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
         });
     </script>
 
