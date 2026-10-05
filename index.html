@@ -10,15 +10,16 @@
 
     <style>
         :root {
-            --graphite: #3d3d3d;      /* тёмный графит — основной акцент */
-            --graphite-dark: #2a2a2a; /* почти чёрный */
-            --silver: #c9c4bd;        /* серебристо-бежевый */
-            --silver-light: #e8e4de;  /* очень светлый оттенок */
-            --bg: #faf8f5;            /* тёплый светлый фон */
-            --text: #2e2e2e;
-            --muted: #8a857e;
-            --back-red: #c65a52;      /* красная стрелка «Назад» */
-            --forward-green: #6a9c5f; /* зелёная стрелка «Вперёд» */
+            --bg: #2a2a2a;           /* основной тёмный фон — как у лого */
+            --bg-soft: #333333;      /* чуть светлее для блоков */
+            --silver: #c9c4bd;       /* серебристо-бежевый — с лого */
+            --silver-soft: #8f8a83;  /* приглушённый серебристый */
+            --text: #e8e4de;         /* светлый текст */
+            --heading: #f0ece6;      /* заголовки */
+            --muted: #9a948c;        /* приглушённый текст */
+            --line: #444444;         /* линии-разделители */
+            --back-red: #c65a52;
+            --forward-green: #6a9c5f;
         }
         * { box-sizing: border-box; }
         body {
@@ -30,23 +31,21 @@
         }
         header {
             text-align: center;
-            padding: 50px 20px 30px;
+            padding: 40px 20px 20px;
         }
         .logo {
-            max-width: 320px;
-            width: 80%;
+            max-width: 280px;
+            width: 70%;
             height: auto;
-            margin: 0 auto 20px;
+            margin: 0 auto 30px;
             display: block;
-            /* лёгкое свечение снизу, чтобы лого «сидело» на светлом фоне */
-            filter: drop-shadow(0 6px 16px rgba(61, 61, 61, 0.15));
         }
         h1 {
             font-size: 2.6rem;
             font-weight: normal;
             letter-spacing: 2px;
             margin: 0 0 10px 0;
-            color: var(--graphite);
+            color: var(--heading);
         }
         .subtitle {
             font-family: 'Helvetica', 'Arial', sans-serif;
@@ -63,24 +62,22 @@
         h2 {
             font-weight: normal;
             font-size: 1.8rem;
-            color: var(--graphite);
-            border-bottom: 1px solid var(--silver);
+            color: var(--heading);
+            border-bottom: 1px solid var(--line);
             padding-bottom: 10px;
             margin-top: 70px;
             margin-bottom: 25px;
         }
         p { font-size: 1.05rem; }
 
-        /* Обо мне */
-        .about p { font-size: 1.1rem; color: #444; }
+        .about p { font-size: 1.1rem; color: var(--silver); }
         .about .signature {
             font-style: italic;
-            color: var(--graphite);
+            color: var(--silver);
             margin-top: 20px;
             font-size: 1.15rem;
         }
 
-        /* Услуги */
         .services-list {
             list-style: none;
             padding: 0;
@@ -88,46 +85,45 @@
             font-family: 'Helvetica', 'Arial', sans-serif;
         }
         .services-list li {
-            border-bottom: 1px solid #ece8e2;
+            border-bottom: 1px solid var(--line);
             padding: 16px 0;
             display: flex;
             justify-content: space-between;
             align-items: baseline;
         }
         .services-list .service-price {
-            color: var(--graphite);
+            color: var(--silver);
             font-weight: bold;
             white-space: nowrap;
             margin-left: 20px;
             letter-spacing: 0.5px;
         }
 
-        /* Контакты */
         .contacts {
             font-family: 'Helvetica', 'Arial', sans-serif;
             font-size: 1rem;
             line-height: 2;
+            color: var(--silver);
         }
         .contacts a {
-            color: var(--graphite);
+            color: var(--heading);
             text-decoration: none;
-            border-bottom: 1px solid var(--silver);
+            border-bottom: 1px solid var(--silver-soft);
             transition: border-color 0.2s;
         }
-        .contacts a:hover { border-bottom-color: var(--graphite); }
+        .contacts a:hover { border-bottom-color: var(--silver); }
         .contacts .label {
             display: inline-block;
             min-width: 120px;
             color: var(--muted);
         }
 
-        /* Панорама — большая, без рамок */
         #panorama {
             width: 100%;
             height: 75vh;
             min-height: 500px;
             margin-top: 30px;
-            background: var(--silver-light);
+            background: #1f1f1f;
             border: none;
             border-radius: 0;
         }
@@ -144,16 +140,16 @@
             font-family: 'Helvetica', 'Arial', sans-serif;
             font-size: 0.85rem;
             color: var(--muted);
-            border-top: 1px solid #ece8e2;
+            border-top: 1px solid var(--line);
             margin-top: 40px;
         }
         @media (max-width: 600px) {
             h1 { font-size: 1.9rem; }
-            .logo { max-width: 220px; }
+            .logo { max-width: 200px; }
             #panorama { height: 55vh; min-height: 320px; }
         }
 
-        /* ===== Спиннер загрузки ===== */
+        /* ===== Спиннер ===== */
         .pnlm-load-box {
             background: transparent !important;
             box-shadow: none !important;
@@ -177,8 +173,8 @@
             display: block;
             width: 50px;
             height: 50px;
-            border: 4px solid rgba(61, 61, 61, 0.15);
-            border-top-color: var(--graphite);
+            border: 4px solid rgba(201, 196, 189, 0.2);
+            border-top-color: var(--silver);
             border-radius: 50%;
             animation: pnlm-spin 0.9s linear infinite;
             margin: 0 auto;
@@ -187,10 +183,10 @@
             to { transform: rotate(360deg); }
         }
 
-        /* ===== Скрываем заголовок сцены ===== */
+        /* Прячем заголовок сцены */
         .pnlm-title-box { display: none !important; }
 
-        /* ===== Красные стрелки «Назад» ===== */
+        /* Красные стрелки «Назад» */
         .hotspot-back.pnlm-hotspot,
         .hotspot-back .pnlm-hotspot-base {
             background-color: var(--back-red) !important;
@@ -199,14 +195,9 @@
         .hotspot-back.pnlm-hotspot::before {
             border-bottom-color: var(--back-red) !important;
         }
-        .hotspot-back.pnlm-hotspot::after {
-            color: #fff !important;
-        }
-        .hotspot-back .pnlm-sprite {
-            background-color: var(--back-red) !important;
-        }
+        .hotspot-back.pnlm-hotspot::after { color: #fff !important; }
 
-        /* ===== Зелёные стрелки «Вперёд» ===== */
+        /* Зелёные стрелки «Вперёд» */
         .hotspot-forward.pnlm-hotspot,
         .hotspot-forward .pnlm-hotspot-base {
             background-color: var(--forward-green) !important;
@@ -215,18 +206,15 @@
         .hotspot-forward.pnlm-hotspot::before {
             border-bottom-color: var(--forward-green) !important;
         }
-        .hotspot-forward.pnlm-hotspot::after {
-            color: #fff !important;
-        }
-        .hotspot-forward .pnlm-sprite {
-            background-color: var(--forward-green) !important;
-        }
+        .hotspot-forward.pnlm-hotspot::after { color: #fff !important; }
+
+        /* Убираем белую полосу снизу панорамы (Pannellum иногда её рисует) */
+        .pnlm-container { background: #1f1f1f !important; }
     </style>
 </head>
 <body>
 
     <header>
-        <!-- Логотип: файл logo.png должен лежать в корне репозитория рядом с index.html -->
         <img src="logo.png" alt="Larisa — салон красоты" class="logo">
         <h1>Larisa test site</h1>
         <div class="subtitle">Салон красоты · Женские прически</div>
@@ -265,7 +253,7 @@
         <p>Если вы не уверены, как нас найти — покрутите панораму ниже. Она проведёт вас шаг за шагом от ближайшего ориентира до входа в салон.</p>
 
         <div id="panorama"></div>
-        <p class="instructions">Нажмите и перетаскивайте мышкой (или пальцем), чтобы осмотреться по сторонам. Красные стрелки — назад по маршруту, зелёные — вперёд.</p>
+        <p class="instructions">Нажмите и перетаскивайте мышкой (или пальцем), чтобы осмотреться по сторонам. Красные стрелки — назад, зелёные — вперёд.</p>
 
     </main>
 
